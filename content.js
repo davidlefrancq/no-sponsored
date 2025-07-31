@@ -115,8 +115,20 @@ remover.removeSponsoredItems();
 
 // FR: Observe les changements dans le DOM pour supprimer les résultats sponsorisés dynamiquement
 // EN: Observes DOM changes to dynamically remove sponsored results
-const observer = new MutationObserver(() => {
+const debounce = (func, delay) => {
+  let timeout;
+  return (...args) => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func(...args), delay);
+  };
+};
+
+const debouncedRemoveSponsoredItems = debounce(() => {
   remover.removeSponsoredItems();
+}, 200);
+
+const observer = new MutationObserver(() => {
+  debouncedRemoveSponsoredItems();
 });
 observer.observe(document.body, {
   childList: true,
