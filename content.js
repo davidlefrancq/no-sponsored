@@ -113,8 +113,8 @@ class SponsoredContentRemover {
 const remover = new SponsoredContentRemover();
 remover.removeSponsoredItems();
 
-// FR: Observe les changements dans le DOM pour supprimer les résultats sponsorisés dynamiquement
-// EN: Observes DOM changes to dynamically remove sponsored results
+// FR: Utilise un anti-rebond pour éviter les appels fréquents à la fonction de suppression
+// EN: Uses a debounce to avoid frequent calls to the removal function
 const debounce = (func, delay) => {
   let timeout;
   return (...args) => {
@@ -123,10 +123,14 @@ const debounce = (func, delay) => {
   };
 };
 
+// FR: Fonction anti-rebond pour supprimer les éléments sponsorisés
+// EN: Débounced function to remove sponsored items
 const debouncedRemoveSponsoredItems = debounce(() => {
   remover.removeSponsoredItems();
 }, 200);
 
+// FR: Observe les changements dans le DOM pour supprimer les résultats sponsorisés dynamiquement
+// EN: Observes DOM changes to dynamically remove sponsored results
 const observer = new MutationObserver(() => {
   debouncedRemoveSponsoredItems();
 });
