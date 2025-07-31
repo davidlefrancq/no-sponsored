@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "NoSponsored",
+  "version": "1.0",
+  "description": "Masque les résultats sponsorisés sur Google Search.",
+  "icons": {
+    "48": "icon48.png",
+    "128": "icon128.png",
+    "1024": "icon1024.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.google.com/search*",
+        "https://www.google.fr/search*",
+        "https://www.google.de/search*",
+        "https://www.google.es/search*",
+        "https://www.google.it/search*",
+        "https://www.google.pt/search*",
+        "https://www.google.ru/search*",
+        "https://www.google.pl/search*"
+      ],
+      "js": ["content.js"]
+    }
+  ],
+  "permissions": []
+}
