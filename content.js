@@ -12,7 +12,7 @@ class SponsoredLocalizedKeywords {
     es: ["Patrocinado"],
     it: ["Sponsorizzato", "Sponsorizzata"],
     pt: ["Patrocinado", "Patrocinada"],
-    ru: ["Cпонсируемый"],
+    ru: ["Спонсируемый"],
     pl: ["Sponsorowany", "Sponsorowana", "Sponsorowane"],
   };
 
